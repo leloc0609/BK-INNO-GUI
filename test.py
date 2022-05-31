@@ -27,8 +27,7 @@ def serial_read_data(serial, length):
     return data_out
 
 def test_relay_485(serial):
-    relay_on = [0x01, 0x06, 0x00, 0x00, 0x00, 0xFF] #0x01 dau tien la id cai relay
-
+    relay_on = [0x01, 0x06, 0x00, 0x00, 0x00, 0xFF]
     relay_off = [0x01, 0x06, 0x00, 0x00, 0x00, 0x00]
     print("ON")
     serial.write(addCRC16(relay_on))
@@ -41,8 +40,8 @@ def test_relay_485(serial):
     print(result)
     time.sleep(2)
 
-serialCommunication = Serial(port="COM11", baudrate=9600)
+serialCommunication = Serial(port="COM13", baudrate=9600)
 
 while True:
     test_relay_485(serialCommunication)
-    time.sleep(5) 
+    time.sleep(2)
